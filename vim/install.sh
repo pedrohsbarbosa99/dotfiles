@@ -17,4 +17,4 @@ fi
 
 curl -Lo ~/.vimrc https://raw.githubusercontent.com/pedrohsbarbosa99/dotfiles/main/vim/vimrc
 
-vim +'PlugInstall' +qall
+vim +PlugInstall +qall
