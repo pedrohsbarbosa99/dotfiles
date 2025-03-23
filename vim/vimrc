@@ -61,3 +61,4 @@ autocmd FileType go setlocal softtabstop=4 " Mantém alinhamento correto ao edit
 set visualbell
 set t_vb=
 :set mouse=a
+let g:gutentags_enabled = 0
