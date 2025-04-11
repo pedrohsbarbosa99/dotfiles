@@ -37,4 +37,23 @@
 (setq lsp-ui-doc-position 'at-point)
 (setq byte-compile-warnings '(not docstrings))
 
+(use-package blamer
+  :ensure t
+  :custom
+  ;; Tempo de espera para aparecer o blame (em segundos)
+  (blamer-idle-time 0.3)
+  ;; Formato da linha de blame
+  (blamer-commit-formatter "✎ %s")
+  (blamer-max-commit-message-length 50)
+  (blamer-min-offset 80)
+  ;; Ativa globalmente
+  :config
+  (global-blamer-mode 1)
+  :custom-face
+  ;; Estilo visual do blame
+  (blamer-face ((t :foreground "#7a88cf"
+                   :background nil
+                   :height 120
+                   :italic t))))
+
 (provide 'code-config)
