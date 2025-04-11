@@ -15,6 +15,16 @@
 (require 'hooks)
 (require 'term-config)
 
+
+
+(defun my/python-auto-venv ()
+  "Auto-activate .venv in project root."
+  (let ((venv-path (locate-dominating-file default-directory "venv")))
+    (when venv-path
+      (pyvenv-activate (expand-file-name "venv" venv-path)))))
+
+(add-hook 'python-mode-hook #'my/python-auto-venv)
+
 (use-package move-text
   :ensure t
   :config
@@ -32,6 +42,7 @@
            enable-recursive-minibuffers t)
     (global-set-key "\C-f" 'swiper)))
 
+
 (use-package counsel
   :ensure t)
 (custom-set-variables
@@ -40,7 +51,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(counsel swiper move-text vterm-toggle vterm which-key toml-mode lsp-ui lsp-pyright flycheck-inline flycheck company yasnippet origami impatient-mode simple-httpd emmet-mode web-mode markdown-mode dashboard projectile diff-hl magit emojify centaur-tabs neotree spaceline catppuccin-theme all-the-icons)))
+   '(pyvenv ergoemacs-mode counsel swiper move-text vterm-toggle vterm which-key toml-mode lsp-ui lsp-pyright flycheck-inline flycheck company yasnippet origami impatient-mode simple-httpd emmet-mode web-mode markdown-mode dashboard projectile diff-hl magit emojify centaur-tabs neotree spaceline catppuccin-theme all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

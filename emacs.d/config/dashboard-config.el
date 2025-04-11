@@ -22,7 +22,7 @@
   :init
   (setq dashboard-items '((recents . 5)
 			  (projects . 10))
-	dashboard-banner-logo-title "Olar bb!"
+	dashboard-banner-logo-title "Welcome to the mato!"
 	dashboard-startup-banner 'logo
 	dashboard-set-file-icons t
 	dashboard-icon-type 'all-the-icons
