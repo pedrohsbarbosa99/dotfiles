@@ -17,14 +17,6 @@
 
 
 
-(defun my/python-auto-venv ()
-  "Auto-activate .venv in project root."
-  (let ((venv-path (locate-dominating-file default-directory "venv")))
-    (when venv-path
-      (pyvenv-activate (expand-file-name "venv" venv-path)))))
-
-(add-hook 'python-mode-hook #'my/python-auto-venv)
-
 (use-package move-text
   :ensure t
   :config
