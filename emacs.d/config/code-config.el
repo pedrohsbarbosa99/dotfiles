@@ -22,7 +22,7 @@
   :after lsp-mode
   :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :config
-  (setq lsp-pyright-venv-directory ".venv"))
+  (setq lsp-pyright-venv-directory "venv"))
 
 (use-package lsp-ui
   :ensure t
@@ -36,5 +36,13 @@
 
 (setq lsp-ui-doc-position 'at-point)
 (setq byte-compile-warnings '(not docstrings))
+
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t))
+)
 
 (provide 'code-config)

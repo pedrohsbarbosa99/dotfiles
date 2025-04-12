@@ -37,4 +37,10 @@
     (funcall initial-major-mode)
     (setq buffer-offer-save t)))
 
+(defun my/python-auto-venv ()
+  (let ((root (locate-dominating-file default-directory "venv")))
+    (when root
+      (pyvenv-activate (expand-file-name "venv" root)))))
+
+
 (provide 'functions)

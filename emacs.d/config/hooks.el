@@ -22,4 +22,8 @@
 	  '(lambda () (define-key python-mode-map (kbd "C-/") 'comment-line)))
 (add-hook 'python-mode-hook '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
 
+(add-hook 'python-mode-hook #'my/python-auto-venv)
+
+(add-hook 'after-save-hook #'my-python-darker-hook)
+
 (provide 'hooks)
