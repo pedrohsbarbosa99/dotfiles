@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: sardine-D
-# key: /D
-# --
-
-D('$1', midinote='$2', i=i)

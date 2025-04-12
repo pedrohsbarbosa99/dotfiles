@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: sardine-N
-# key: /N
-# --
-
-N('$1', chan=$2, i=i)
