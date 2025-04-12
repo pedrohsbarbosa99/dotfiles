@@ -2,6 +2,14 @@
   :ensure t
   :config (which-key-mode))
 
+
+(use-package multiple-cursors
+  :ensure t)
+
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 (global-unset-key (kbd "C-/"))
 (global-unset-key (kbd "C-_"))
 (global-unset-key (kbd "M-a"))
