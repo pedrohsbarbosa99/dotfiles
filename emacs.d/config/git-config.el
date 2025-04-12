@@ -9,10 +9,19 @@
 ;  :after magit
 ;  :config (magit-todos-mode 1))
 
-
-;; Show diff inline
-(use-package diff-hl
-  :ensure t)
+(use-package blamer
+  :ensure t
+  :custom
+  (blamer-idle-time 0.1)                        ;; Show blame after 0.3s idle
+  (blamer-min-offset 45)                        ;; Minimum space before blame text
+  (blamer-view 'overlay-right)                 ;; Inline blame at end of line
+  (blamer-author-formatter "👤 %s ")
+  (blamer-datetime-formatter "[%s]")
+  (blamer-commit-formatter " ● %s")
+  (blamer-pretty-time-p t)
+  (blamer-max-commit-message-length 50)
+  :config
+  (global-blamer-mode 1))                       ;; Automatically enable everywhere
 
 
 (provide 'git-config)

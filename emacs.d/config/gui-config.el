@@ -93,4 +93,6 @@
   :ensure t
   :hook (after-init . global-emojify-mode))
 
+(setq-default display-fill-column-indicator-column 88)
+
 (provide 'gui-config)

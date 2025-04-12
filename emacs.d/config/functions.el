@@ -43,4 +43,13 @@
       (pyvenv-activate (expand-file-name "venv" root)))))
 
 
+(defun my/project-vterm-bottom ()
+  "Abre vterm na raiz do projeto atual na parte inferior."
+  (interactive)
+  (let ((default-directory (project-root (project-current t))))
+    (split-window-below)  ;; Divide a janela para abrir o terminal abaixo
+    (other-window 1)      ;; Muda o foco para a nova janela
+    (vterm)))    
+
+
 (provide 'functions)

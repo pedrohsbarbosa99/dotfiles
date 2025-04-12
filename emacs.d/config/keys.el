@@ -48,4 +48,8 @@
                   (let ((old-face-attribute (face-attribute 'default :height)))
                     (set-face-attribute 'default nil :height (- old-face-attribute 5)))))
 
+(global-set-key (kbd "C-c v") #'my/project-vterm-bottom)
+
+(global-set-key (kbd "C-c d") 'make-directory)
+
 (provide 'keys)
