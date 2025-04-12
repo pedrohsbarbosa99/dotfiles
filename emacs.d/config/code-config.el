@@ -11,6 +11,8 @@
   :ensure t
   :hook ((python-mode . lsp))
   :commands lsp
+  :custom
+  (lsp-completition-provider :capf)
   :config
   (setq lsp-enable-symbol-highlighting t
         lsp-headerline-breadcrumb-enable t
@@ -37,12 +39,9 @@
 (setq lsp-ui-doc-position 'at-point)
 (setq byte-compile-warnings '(not docstrings))
 
-(use-package auto-complete
+(use-package corfu
   :ensure t
   :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t))
-)
+  (global-corfu-mode))
 
 (provide 'code-config)
