@@ -20,6 +20,7 @@
   (blamer-commit-formatter " ● %s")
   (blamer-pretty-time-p t)
   (blamer-max-commit-message-length 50)
+  (blamer-type 'visual)
   :config
   (global-blamer-mode 1))                       ;; Automatically enable everywhere
 

@@ -49,7 +49,6 @@
   (let ((default-directory (project-root (project-current t))))
     (split-window-below)  ;; Divide a janela para abrir o terminal abaixo
     (other-window 1)      ;; Muda o foco para a nova janela
-    (vterm)))    
-
+    (vterm)))
 
 (provide 'functions)
