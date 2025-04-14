@@ -14,7 +14,7 @@
 (require 'keys)
 (require 'hooks)
 (require 'term-config)
-(require 'darker)
+
 
 
 

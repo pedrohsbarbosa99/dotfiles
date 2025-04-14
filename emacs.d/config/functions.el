@@ -37,11 +37,6 @@
     (funcall initial-major-mode)
     (setq buffer-offer-save t)))
 
-(defun my/python-auto-venv ()
-  (let ((root (locate-dominating-file default-directory "venv")))
-    (when root
-      (pyvenv-activate (expand-file-name "venv" root)))))
-
 
 (defun my/project-vterm-bottom ()
   "Abre vterm na raiz do projeto atual na parte inferior."
@@ -50,5 +45,18 @@
     (split-window-below)  ;; Divide a janela para abrir o terminal abaixo
     (other-window 1)      ;; Muda o foco para a nova janela
     (vterm)))
+
+(defcustom pyenv-mode-mode-line-format nil
+  "Format string for displaying pyenv version in mode-line."
+  :type '(choice (const :tag "Disabled" nil)
+                 (string :tag "Custom Format")))
+
+
+(defun projectile-pyenv-mode-set ()
+  "Set pyenv version matching project name."
+  (let ((project (projectile-project-name)))
+    (if (member project (pyenv-mode-versions))
+        (pyenv-mode-set project)
+      (pyenv-mode-unset))))
 
 (provide 'functions)

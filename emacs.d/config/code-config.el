@@ -1,18 +1,21 @@
-(use-package pyvenv
-  :ensure t
-  :config
-  (setenv "WORKON_HOME" "~/.pyenv/versions")
-  (pyvenv-mode 1))
+(use-package pyenv-mode
+  :ensure t)
 
-(use-package python
-  :hook (python-mode . pyvenv-tracking-mode))
+(use-package reformatter
+  :hook ((python-mode . darker-reformat-on-save-mode))
+  :config
+  (reformatter-define darker-reformat
+    :program "darker"
+    :stdin nil
+    :stdout nil
+    :args (list "-q" input-file)))
 
 (use-package lsp-mode
   :ensure t
   :hook ((python-mode . lsp))
   :commands lsp
   :custom
-  (lsp-completition-provider :capf)
+  (lsp-completion-provider :capf)
   :config
   (setq lsp-enable-symbol-highlighting t
         lsp-headerline-breadcrumb-enable t
@@ -22,9 +25,15 @@
 (use-package lsp-pyright
   :ensure t
   :after lsp-mode
-  :hook (python-mode . (lambda () (require 'lsp-pyright)))
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp)))
   :config
-  (setq lsp-pyright-venv-directory "venv"))
+  (setq lsp-pyright-python-executable-cmd "python"))
+
+(setenv "PATH" (concat (getenv "PATH") ":/home/pedro/.nvm/versions/node/v20.13.1/bin"))
+(add-to-list 'exec-path "/home/pedro/.nvm/versions/node/v20.13.1/bin")
+
 
 (use-package lsp-ui
   :ensure t
@@ -45,5 +54,13 @@
   (global-corfu-mode))
 
 
+(use-package origami
+  :ensure t
+  :bind
+  ("C-c o o" . origami-toggle-node)
+  ("C-c o a" . origami-toggle-all-nodes)
+  ("C-c o r" . origami-recursively-toggle-node)
+  :config
+  (global-origami-mode))
 
 (provide 'code-config)

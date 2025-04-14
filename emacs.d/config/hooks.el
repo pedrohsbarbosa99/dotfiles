@@ -22,9 +22,14 @@
 	  '(lambda () (define-key python-mode-map (kbd "C-/") 'comment-line)))
 (add-hook 'python-mode-hook '(lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
 
-(add-hook 'python-mode-hook #'my/python-auto-venv)
+(add-hook 'pyvenv-post-activate-hooks
+          (lambda ()
+            (setq lsp-pyright-python-executable-cmd (concat pyvenv-virtual-env "/bin/python"))
+            (when (bound-and-true-p lsp-mode)
+              (lsp-restart-workspace))))
 
-(add-hook 'after-save-hook #'my-python-darker-hook)
+(add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set)
 
+(add-hook 'python-mode-hook 'hs-minor-mode)
 
 (provide 'hooks)

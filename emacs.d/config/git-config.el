@@ -12,7 +12,7 @@
 (use-package blamer
   :ensure t
   :custom
-  (blamer-idle-time 0.1)                        ;; Show blame after 0.3s idle
+  (blamer-idle-time 0.4)                        ;; Show blame after 0.3s idle
   (blamer-min-offset 45)                        ;; Minimum space before blame text
   (blamer-view 'overlay-right)                 ;; Inline blame at end of line
   (blamer-author-formatter "👤 %s ")
