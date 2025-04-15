@@ -1,14 +1,20 @@
 (use-package pyenv-mode
   :ensure t)
 
-(use-package reformatter
-  :hook ((python-mode . darker-reformat-on-save-mode))
+(use-package pyvenv
+  :ensure t
   :config
-  (reformatter-define darker-reformat
-    :program "darker"
+  (pyvenv-mode 1))
+
+
+(use-package reformatter
+  :ensure t
+  :config
+  (reformatter-define black-reformat
+    :program "~/.pyenv/shims/black" 
+    :args (list "-q" "--fast" input-file)
     :stdin nil
-    :stdout nil
-    :args (list "-q" input-file)))
+    :stdout nil))
 
 (use-package lsp-mode
   :ensure t
@@ -29,7 +35,11 @@
                          (require 'lsp-pyright)
                          (lsp)))
   :config
-  (setq lsp-pyright-python-executable-cmd "python"))
+  (setq lsp-pyright-python-executable-cmd "python")
+  (lsp-register-custom-settings
+   '(("python.analysis.typeCheckingMode" "basic")
+     ("pyright.reportOptionalMemberAccess" "none"))))
+
 
 (setenv "PATH" (concat (getenv "PATH") ":/home/pedro/.nvm/versions/node/v20.13.1/bin"))
 (add-to-list 'exec-path "/home/pedro/.nvm/versions/node/v20.13.1/bin")

@@ -51,12 +51,17 @@
   :type '(choice (const :tag "Disabled" nil)
                  (string :tag "Custom Format")))
 
+(defun my/auto-activate-venv ()
+  "Ativa automaticamente a venv local se a pasta 'venv' existir em algum diretório ascendente."
+  (let* ((root (locate-dominating-file default-directory "venv"))
+         (venv-path (when root (expand-file-name "venv" root))))
+    (when (and venv-path (file-directory-p venv-path))
+      (pyvenv-activate venv-path))))
 
-(defun projectile-pyenv-mode-set ()
-  "Set pyenv version matching project name."
-  (let ((project (projectile-project-name)))
-    (if (member project (pyenv-mode-versions))
-        (pyenv-mode-set project)
-      (pyenv-mode-unset))))
+(defun my/format-on-save ()
+  "Formata o código com black e isort ao salvar."
+  (add-hook 'before-save-hook #'black-reformat nil t)
+  (add-hook 'before-save-hook #'isort-reformat nil t))
+
 
 (provide 'functions)
