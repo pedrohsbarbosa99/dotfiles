@@ -10,9 +10,11 @@
 (use-package reformatter
   :ensure t
   :config
-  (reformatter-define black-reformat
-    :program "~/.pyenv/shims/black" 
-    :args (list "-q" "--fast" input-file)
+  (reformatter-define darker-reformat
+    :program (concat
+              (locate-dominating-file default-directory "venv")
+              "venv/bin/darker")
+    :args (list input-file "--isort")
     :stdin nil
     :stdout nil))
 

@@ -58,10 +58,4 @@
     (when (and venv-path (file-directory-p venv-path))
       (pyvenv-activate venv-path))))
 
-(defun my/format-on-save ()
-  "Formata o código com black e isort ao salvar."
-  (add-hook 'before-save-hook #'black-reformat nil t)
-  (add-hook 'before-save-hook #'isort-reformat nil t))
-
-
 (provide 'functions)

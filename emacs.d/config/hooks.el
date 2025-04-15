@@ -30,7 +30,7 @@
             (when (bound-and-true-p lsp-mode)
               (lsp-restart-workspace))))
 
-(add-hook 'python-mode-hook #'black-reformat-on-save-mode)
+(add-hook 'python-mode-hook #'darker-reformat-on-save-mode)
 
 
 (provide 'hooks)
