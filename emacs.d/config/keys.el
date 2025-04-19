@@ -59,4 +59,6 @@
 (global-set-key (kbd "C-c C-h") 'hs-hide-all)
 (global-set-key (kbd "C-c C-s") 'hs-show-all)
 
+(global-set-key (kbd "C-c g") 'goto-line)
+
 (provide 'keys)

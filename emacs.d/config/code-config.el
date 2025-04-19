@@ -6,14 +6,17 @@
   :config
   (pyvenv-mode 1))
 
-
 (use-package reformatter
   :ensure t
   :config
   (reformatter-define darker-reformat
-    :program (concat
-              (locate-dominating-file default-directory "venv")
-              "venv/bin/darker")
+    :program
+    (let ((root (or (locate-dominating-file default-directory ".venv")
+                    (locate-dominating-file default-directory "venv"))))
+      (when root
+        (concat root (if (file-directory-p (concat root ".venv"))
+                         ".venv/bin/darker"
+                       "venv/bin/darker"))))
     :args (list input-file "--isort")
     :stdin nil
     :stdout nil))
@@ -33,14 +36,9 @@
 (use-package lsp-pyright
   :ensure t
   :after lsp-mode
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp)))
+  :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :config
-  (setq lsp-pyright-python-executable-cmd "python")
-  (lsp-register-custom-settings
-   '(("python.analysis.typeCheckingMode" "basic")
-     ("pyright.reportOptionalMemberAccess" "none"))))
+  (setq lsp-pyright-python-executable-cmd "python"))
 
 
 (setenv "PATH" (concat (getenv "PATH") ":/home/pedro/.nvm/versions/node/v20.13.1/bin"))

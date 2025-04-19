@@ -32,5 +32,8 @@
 
 (add-hook 'python-mode-hook #'darker-reformat-on-save-mode)
 
+;; rust hooks
+(add-hook 'rust-mode-hook
+          (lambda () (setq indent-tabs-mode nil)))
 
 (provide 'hooks)

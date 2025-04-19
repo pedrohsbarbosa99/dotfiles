@@ -14,6 +14,7 @@
 (require 'keys)
 (require 'hooks)
 (require 'term-config)
+(require 'rust-config)
 
 
 
