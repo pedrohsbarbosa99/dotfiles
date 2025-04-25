@@ -55,7 +55,7 @@
         lsp-ui-doc-show-with-mouse t
         lsp-ui-sideline-enable nil))
 
-(setq lsp-ui-doc-position 'at-point)
+(setq lsp-ui-doc-position 'right)
 (setq byte-compile-warnings '(not docstrings))
 
 (use-package corfu

@@ -31,6 +31,6 @@
 	dashboard-set-init-info nil)
   :config
   (dashboard-setup-startup-hook))
-  (setq dashboard-org-agenda-categories '("Tasks"))
+(setq dashboard-org-agenda-categories '("Tasks"))
 
 (provide 'dashboard-config)

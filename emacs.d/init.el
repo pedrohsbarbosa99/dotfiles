@@ -15,6 +15,8 @@
 (require 'hooks)
 (require 'term-config)
 (require 'rust-config)
+(require 'js-config)
+
 
 
 

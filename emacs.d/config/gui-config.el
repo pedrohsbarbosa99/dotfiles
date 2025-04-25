@@ -95,4 +95,6 @@
 
 (setq-default display-fill-column-indicator-column 88)
 (setq projectile-project-search-path '("~/workspace/"))
+
+
 (provide 'gui-config)
