@@ -4,7 +4,7 @@
 (add-hook 'prog-mode-hook 'hl-line-mode)
 
 ;; Markdown
-;(add-hook 'markdown-mode-hook #'nb/markdown-unhighlight)
+(add-hook 'markdown-mode-hook #'nb/markdown-unhighlight)
 
 (add-hook 'after-init-hook #'global-emojify-mode)
 ;; (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)

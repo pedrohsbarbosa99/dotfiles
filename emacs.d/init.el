@@ -20,27 +20,26 @@
 
 
 
-(use-package move-text
-  :ensure t
-  :config
-  (progn
-    (global-set-key (kbd "C-<up>") 'move-text-up)
-    (global-set-key (kbd "C-<down>") 'move-text-down)))
+;; (use-package move-text
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (global-set-key (kbd "C-<up>") 'move-text-up)
+;;     (global-set-key (kbd "C-<down>") 'move-text-down)))
 
-;; Ivy
-(use-package swiper
-  :ensure t
-  :init
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t
-           enable-recursive-minibuffers t)
-    (global-set-key "\C-f" 'swiper)))
+;; ;; Ivy
+;; (use-package swiper
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (ivy-mode 1)
+;;     (setq ivy-use-virtual-buffers t
+;;            enable-recursive-minibuffers t)
+;;     (global-set-key "\C-f" 'swiper)))
 
 
-(use-package counsel
-  :ensure t)
-
+;; (use-package counsel
+;;   :ensure t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
