@@ -37,6 +37,10 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+
+(use-package all-the-icons :ensure t)
+(use-package nerd-icons :ensure t)
+
 ;; Update changed buffers
 (global-auto-revert-mode t)
 

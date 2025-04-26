@@ -41,8 +41,12 @@
   (setq lsp-pyright-python-executable-cmd "python"))
 
 
-(setenv "PATH" (concat (getenv "PATH") ":/home/pedro/.nvm/versions/node/v20.13.1/bin"))
-(add-to-list 'exec-path "/home/pedro/.nvm/versions/node/v20.13.1/bin")
+(let* ((nvm-dir (expand-file-name "~/.nvm"))
+       (node-version (string-trim (shell-command-to-string "nvm current")))
+       (node-path (concat nvm-dir "/versions/node/" node-version "/bin")))
+  (setenv "PATH" (concat (getenv "PATH") ":" node-path))
+  (add-to-list 'exec-path node-path))
+
 
 
 (use-package lsp-ui

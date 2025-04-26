@@ -10,12 +10,11 @@
 (require 'html-config)
 (require 'code-config)
 (require 'languages)
+(require 'rust-config)
 (require 'functions)
 (require 'keys)
 (require 'hooks)
 (require 'term-config)
-(require 'rust-config)
-(require 'js-config)
 
 
 
@@ -41,13 +40,18 @@
 
 (use-package counsel
   :ensure t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(multiple-cursors corfu blamer pyvenv ergoemacs-mode counsel swiper move-text vterm-toggle vterm which-key toml-mode lsp-ui lsp-pyright flycheck-inline flycheck company yasnippet origami impatient-mode simple-httpd emmet-mode web-mode markdown-mode dashboard projectile diff-hl magit emojify centaur-tabs neotree spaceline catppuccin-theme all-the-icons)))
+   '(## all-the-icons blamer catppuccin-theme centaur-tabs corfu
+	dashboard diff-hl emmet-mode emojify impatient-mode
+	lsp-pyright lsp-ui magit multiple-cursors neotree nerd-icons
+	origami projectile pyenv-mode pyvenv reformatter rust-mode
+	spaceline toml-mode vterm-toggle web-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
