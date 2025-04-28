@@ -20,37 +20,32 @@
 
 
 
-;; (use-package move-text
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (global-set-key (kbd "C-<up>") 'move-text-up)
-;;     (global-set-key (kbd "C-<down>") 'move-text-down)))
+(use-package move-text
+  :ensure t
+  :config
+  (progn
+    (global-set-key (kbd "C-<up>") 'move-text-up)
+    (global-set-key (kbd "C-<down>") 'move-text-down)))
 
-;; ;; Ivy
-;; (use-package swiper
-;;   :ensure t
-;;   :init
-;;   (progn
-;;     (ivy-mode 1)
-;;     (setq ivy-use-virtual-buffers t
-;;            enable-recursive-minibuffers t)
-;;     (global-set-key "\C-f" 'swiper)))
+;; Ivy
+(use-package swiper
+  :ensure t
+  :init
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t
+           enable-recursive-minibuffers t)
+    (global-set-key "\C-f" 'swiper)))
 
 
-;; (use-package counsel
-;;   :ensure t)
+(use-package counsel
+  :ensure t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(## all-the-icons blamer catppuccin-theme centaur-tabs corfu
-	dashboard diff-hl emmet-mode emojify impatient-mode
-	lsp-pyright lsp-ui magit multiple-cursors neotree nerd-icons
-	origami projectile pyenv-mode pyvenv reformatter rust-mode
-	spaceline toml-mode vterm-toggle web-mode)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
