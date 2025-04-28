@@ -41,11 +41,12 @@
   (setq lsp-pyright-python-executable-cmd "python"))
 
 
-(let* ((nvm-dir (expand-file-name "~/.nvm"))
-       (node-version (string-trim (shell-command-to-string "nvm current")))
-       (node-path (concat nvm-dir "/versions/node/" node-version "/bin")))
-  (setenv "PATH" (concat (getenv "PATH") ":" node-path))
+(let* ((nvm-init "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"")
+       (node-version (string-trim (shell-command-to-string (concat nvm-init " && nvm current"))))
+       (node-path (concat (expand-file-name "~/.nvm/versions/node/") node-version "/bin")))
+  (setenv "PATH" (concat node-path ":" (getenv "PATH")))
   (add-to-list 'exec-path node-path))
+
 
 
 
