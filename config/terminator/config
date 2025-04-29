@@ -7,7 +7,7 @@
 [profiles]
   [[default]]
     background_color = "#1e1e2e"
-    font = JetBrains Mono 20
+    font = Monaspace Xenon 18
     foreground_color = "#cdd6f4"
     show_titlebar = False
     scrollbar_position = hidden
