@@ -4,11 +4,10 @@
   group_all_toggle = <Alt><Super>g
   broadcast_off = <Primary><Shift><Alt>g
   broadcast_all = <Primary><Alt>g
-  help = Pause
 [profiles]
   [[default]]
     background_color = "#1e1e2e"
-    font = Source Code Pro 15
+    font = JetBrains Mono 20
     foreground_color = "#cdd6f4"
     show_titlebar = False
     scrollbar_position = hidden
