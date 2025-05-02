@@ -88,4 +88,19 @@
   :init (global-flycheck-mode))
 
 
+;; --- ts
+(use-package tree-sitter-langs
+  :ensure t)
+
+(use-package treesit-auto
+  :ensure t
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
+
+
 (provide 'code-config)
+
