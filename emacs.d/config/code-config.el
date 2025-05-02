@@ -83,4 +83,9 @@
   :config
   (global-origami-mode))
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+
 (provide 'code-config)
