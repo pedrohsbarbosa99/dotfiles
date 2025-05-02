@@ -23,7 +23,7 @@
 
 (use-package lsp-mode
   :ensure t
-  :hook ((python-mode . lsp))
+  :hook ((python-ts-mode . lsp))
   :commands lsp
   :custom
   (lsp-completion-provider :capf)
@@ -36,7 +36,7 @@
 (use-package lsp-pyright
   :ensure t
   :after lsp-mode
-  :hook (python-mode . (lambda () (require 'lsp-pyright)))
+  :hook (python-ts-mode . (lambda () (require 'lsp-pyright)))
   :config
   (setq lsp-pyright-python-executable-cmd "python"))
 
