@@ -32,7 +32,7 @@
 (global-set-key (kbd "C-n") 'new-empty-buffer)
 (global-set-key (kbd "C-k") (lambda () (interactive) (kill-buffer (current-buffer))))
 (global-set-key (kbd "C-c C-v") 'duplicate-line)
-(global-set-key (kbd "C-x C-t") 'projectile-run-vterm)
+(global-set-key (kbd "C-c v") 'projectile-run-vterm)
 (global-set-key (kbd "C-S-f") 'projectile-grep)
 (global-set-key (kbd "C-e") 'flycheck-list-errors)
 
@@ -48,13 +48,14 @@
                   (let ((old-face-attribute (face-attribute 'default :height)))
                     (set-face-attribute 'default nil :height (- old-face-attribute 5)))))
 
-(global-set-key (kbd "C-c v") #'my/project-vterm-bottom)
-
 (global-set-key (kbd "C-c d") 'make-directory)
 
 (global-set-key (kbd "C-c r") 'rgrep)
 
 (global-set-key (kbd "C-c g") 'goto-line)
+
+
+
 
 (provide 'keys)
 

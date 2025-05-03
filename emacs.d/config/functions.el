@@ -38,14 +38,6 @@
     (setq buffer-offer-save t)))
 
 
-(defun my/project-vterm-bottom ()
-  "Abre vterm na raiz do projeto atual na parte inferior."
-  (interactive)
-  (let ((default-directory (project-root (project-current t))))
-    (split-window-below)  ;; Divide a janela para abrir o terminal abaixo
-    (other-window 1)      ;; Muda o foco para a nova janela
-    (vterm)))
-
 (defcustom pyenv-mode-mode-line-format nil
   "Format string for displaying pyenv version in mode-line."
   :type '(choice (const :tag "Disabled" nil)

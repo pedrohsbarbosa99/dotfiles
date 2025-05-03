@@ -54,6 +54,10 @@
   (setq catppuccin-flavor 'mocha)
   (catppuccin-reload))
 
+(use-package zenburn-theme
+  :ensure t
+  )
+
 (use-package spaceline
   :ensure t)
 

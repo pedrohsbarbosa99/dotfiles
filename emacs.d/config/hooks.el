@@ -33,7 +33,7 @@
             (when (bound-and-true-p lsp-mode)
               (lsp-restart-workspace))))
 
-(add-hook 'python-mode-hook #'darker-reformat-on-save-mode)
+(add-hook 'python-ts-mode-hook #'darker-reformat-on-save-mode)
 
 ;; rust hooks
 (add-hook 'rust-mode-hook

@@ -31,7 +31,8 @@
   (setq lsp-enable-symbol-highlighting t
         lsp-headerline-breadcrumb-enable t
         lsp-idle-delay 0.3
-        lsp-log-io nil))
+        lsp-log-io nil)
+  )
 
 (use-package lsp-pyright
   :ensure t
@@ -56,12 +57,12 @@
   :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq lsp-ui-doc-enable t
-        lsp-ui-doc-show-with-cursor t
-        lsp-ui-doc-show-with-mouse t
-        lsp-ui-sideline-enable nil))
+        lsp-ui-sideline-enable t
+        lsp-ui-imenu-enable t
+	lsp-signature-auto-activate nil))
 
-(setq lsp-ui-doc-position 'right)
 (setq byte-compile-warnings '(not docstrings))
+
 
 (use-package corfu
   :ensure t
