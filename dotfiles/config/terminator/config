@@ -7,7 +7,7 @@
 [profiles]
   [[default]]
     background_color = "#1e1e2e"
-    font = "DejaVu Sans Mono Bold 16"
+    font = DejaVu Sans Mono Bold 16
     foreground_color = "#cdd6f4"
     show_titlebar = False
     scrollbar_position = hidden
