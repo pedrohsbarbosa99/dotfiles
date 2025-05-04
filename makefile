@@ -31,6 +31,7 @@ sync:
 	fi
 
 	@echo "📄 Commitando alterações"; \
+	git add .
 	git commit -am "Update Configs"
 
 	@echo "🚀 Enviando..."; \
