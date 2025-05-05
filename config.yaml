@@ -12,8 +12,8 @@ dotfiles:
     src: emacs.d/config
     dst: ~/.emacs.d/config
   f_init.el:
-    src: emacs.d/config
-    dst: ~/.emacs.d/config
+    src: emacs.d/init.el
+    dst: ~/.emacs.d/init.el
   d_snippets:
     src: emacs.d/snippets
     dst: ~/.emacs.d/snippets
@@ -39,3 +39,4 @@ profiles:
     - d_rofi
     - d_terminator
     - f_p10k.zsh
+
