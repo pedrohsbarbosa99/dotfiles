@@ -63,7 +63,7 @@
 ;; Spell
 (setq
     ispell-program-name "/usr/bin/hunspell"
-    ispell-dictionary "pt_BR")
+    ispell-dictionary "en")
 
 (require 'flyspell)
 (eval-after-load "flyspell"
@@ -122,6 +122,7 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+;; multiple cursors
 (use-package multiple-cursors
   :ensure t
   :bind (

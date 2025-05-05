@@ -33,4 +33,8 @@
   (dashboard-setup-startup-hook))
   (setq dashboard-org-agenda-categories '("Tasks"))
 
+;; split window
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
 (provide 'dashboard-config)
