@@ -37,10 +37,11 @@
 (use-package lsp-pyright
   :ensure t
   :after lsp-mode
-  :hook (python-ts-mode . (lambda () (require 'lsp-pyright)))
+  :hook (python-ts-mode . (lambda ()
+                            (require 'lsp-pyright)
+                            (lsp)))
   :config
   (setq lsp-pyright-python-executable-cmd "python"))
-
 
 (let* ((nvm-init "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"")
        (node-version (string-trim (shell-command-to-string (concat nvm-init " && nvm current"))))
