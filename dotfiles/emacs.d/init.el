@@ -10,7 +10,7 @@
 (require 'html-config)
 (require 'code-config)
 (require 'languages)
-(require 'rust-config)
+;; (require 'rust-config)
 (require 'functions)
 (require 'keys)
 (require 'hooks)

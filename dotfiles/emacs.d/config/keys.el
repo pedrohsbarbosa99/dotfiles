@@ -2,14 +2,6 @@
   :ensure t
   :config (which-key-mode))
 
-
-(use-package multiple-cursors
-  :ensure t)
-
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
 (global-unset-key (kbd "C-/"))
 (global-unset-key (kbd "C-_"))
 (global-unset-key (kbd "M-a"))
@@ -32,7 +24,7 @@
 (global-set-key (kbd "C-n") 'new-empty-buffer)
 (global-set-key (kbd "C-k") (lambda () (interactive) (kill-buffer (current-buffer))))
 (global-set-key (kbd "C-c C-v") 'duplicate-line)
-(global-set-key (kbd "C-c v") 'projectile-run-vterm)
+(global-set-key (kbd "C-x C-t") 'projectile-run-vterm)
 (global-set-key (kbd "C-S-f") 'projectile-grep)
 (global-set-key (kbd "C-e") 'flycheck-list-errors)
 
@@ -47,15 +39,8 @@
                   (interactive)
                   (let ((old-face-attribute (face-attribute 'default :height)))
                     (set-face-attribute 'default nil :height (- old-face-attribute 5)))))
-
-(global-set-key (kbd "C-c d") 'make-directory)
-
 (global-set-key (kbd "C-c r") 'rgrep)
 
 (global-set-key (kbd "C-c g") 'goto-line)
 
-
-
-
 (provide 'keys)
-

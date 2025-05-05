@@ -1,9 +1,3 @@
-(use-package diff-hl
-  :ensure t)
-
-(use-package project
-  :ensure nil)
-
 (use-package vterm
   :ensure t
   :bind

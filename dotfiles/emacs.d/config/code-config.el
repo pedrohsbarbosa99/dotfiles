@@ -1,94 +1,104 @@
-(use-package pyenv-mode
-  :ensure t)
-
-(use-package pyvenv
-  :ensure t
-  :config
-  (pyvenv-mode 1))
-
-(use-package reformatter
-  :ensure t
-  :config
-  (reformatter-define darker-reformat
-    :program
-    (let ((root (or (locate-dominating-file default-directory ".venv")
-                    (locate-dominating-file default-directory "venv"))))
-      (when root
-        (concat root (if (file-directory-p (concat root ".venv"))
-                         ".venv/bin/darker"
-                       "venv/bin/darker"))))
-    :args (list input-file "--isort")
-    :stdin nil
-    :stdout nil))
-
-(use-package lsp-mode
-  :ensure t
-  :hook ((python-ts-mode . lsp))
-  :commands lsp
-  :custom
-  (lsp-completion-provider :capf)
-  :config
-  (setq lsp-enable-symbol-highlighting t
-        lsp-headerline-breadcrumb-enable t
-        lsp-idle-delay 0.3
-        lsp-log-io nil)
-  )
-
-(use-package lsp-pyright
-  :ensure t
-  :after lsp-mode
-  :hook (python-ts-mode . (lambda ()
-                            (require 'lsp-pyright)
-                            (lsp)))
-  :config
-  (setq lsp-pyright-python-executable-cmd "python"))
-
-(let* ((nvm-init "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"")
-       (node-version (string-trim (shell-command-to-string (concat nvm-init " && nvm current"))))
-       (node-path (concat (expand-file-name "~/.nvm/versions/node/") node-version "/bin")))
-  (setenv "PATH" (concat node-path ":" (getenv "PATH")))
-  (add-to-list 'exec-path node-path))
-
-
-
-
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (setq lsp-ui-doc-enable t
-        lsp-ui-sideline-enable t
-        lsp-ui-imenu-enable t
-	lsp-signature-auto-activate nil))
-
-(setq byte-compile-warnings '(not docstrings))
-
-
-(use-package corfu
-  :ensure t
-  :init
-  (global-corfu-mode)
-  :custom
-  (corfu-auto t)
-  (corfu-auto-delay 0)
-  (corfu-auto-prefix 1))
-
-
-
+;; Text Folding
 (use-package origami
   :ensure t
-  :bind
-  ("C-c o o" . origami-toggle-node)
-  ("C-c o a" . origami-toggle-all-nodes)
-  ("C-c o r" . origami-recursively-toggle-node)
   :config
   (global-origami-mode))
 
+
+
+(define-key origami-mode-map (kbd "<backtab>") 'origami-toggle-node)
+(define-key origami-mode-map (kbd "C-<iso-lefttab>") 'origami-toggle-all-nodes)
+(setopt display-fill-column-indicator-column 88)
+
+; snippets from autocomplete
+(use-package yasnippet
+  :ensure t)
+
+(yas-global-mode 1)
+
+; company: autocomplete library
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0
+	company-minimum-prefix-length 1)
+  (global-company-mode t))
+
+; Unmapping keys from the Python mode
+(add-hook 'python-mode-hook
+          (lambda() (local-unset-key (kbd "C-c C-c"))))
+(add-hook 'python-mode-hook
+          (lambda() (local-unset-key (kbd "C-c C-s"))))
+
+;; ----------- Syntax checker
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
+  :diminish flycheck-mode
+  :init
+   (setq flycheck-check-syntax-automatically '(save new-line)
+         flycheck-idle-change-delay 5.0
+         flycheck-display-errors-delay 0.9
+         flycheck-highlighting-mode 'symbols
+         flycheck-indication-mode 'left-fringe
+         flycheck-standard-error-navigation t
+         flycheck-deferred-syntax-check nil)
+   :config
+   ;; before install pylint (pipx install pylint)
+   ;; before install flake8 (pipx install flake8)
+   ;; after install, create config file (pylint --generate-rcfile > ~/.pylintrc)
+   (setq flycheck-python-flake8-executable "~/.local/bin/flake8"
+         flycheck-python-pylint-executable "~/.local/bin/pylint")
+   )
 
+;; Spell
+(setq
+    ispell-program-name "/usr/bin/hunspell"
+    ispell-dictionary "pt_BR")
+
+(require 'flyspell)
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+
+(add-hook 'yaml-mode-hook #'flyspell-prog-mode)
+(add-hook 'conf-mode-hook #'flyspell-prog-mode)
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+(add-hook 'toml-mode-hook #'flyspell-prog-mode)
+(add-hook 'dockerfile-mode #'flyspell-prog-mode)
+(add-hook 'docker-compose-mode #'flyspell-prog-mode)
+
+
+(use-package flycheck-inline
+  :ensure t)
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
+
+;; it sucks!
+;; https://github.com/emacs-lsp/lsp-mode/issues/4679
+(setq lsp-copilot-applicable-fn (lambda (&rest _) nil))
+
+(use-package lsp-pyright ;; Python LSP
+  :ensure t
+  :custom (lsp-pyright-langserver-command "~/.local/bin/pyright")
+  :hook
+  ((python-ts-mode . (lambda ()
+                    (require 'lsp-pyright)
+                    (lsp-deferred)))))
+
+;; ----- lsp
+(setq lsp-auto-guess-root t)
+
+(use-package lsp-ui
+  :ensure t
+  :hook (lsp-mode . lsp-ui-mode)
+  :after lsp-mode
+  :config
+  (setq lsp-ui-doc-mode 1))
+
+(require 'lsp-diagnostics)
+(lsp-diagnostics-flycheck-enable)
 
 ;; --- ts
 (use-package tree-sitter-langs
@@ -103,6 +113,4 @@
   (global-treesit-auto-mode))
 
 
-
 (provide 'code-config)
-

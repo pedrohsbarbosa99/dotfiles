@@ -37,10 +37,6 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-
-(use-package all-the-icons :ensure t)
-(use-package nerd-icons :ensure t)
-
 ;; Update changed buffers
 (global-auto-revert-mode t)
 
@@ -53,10 +49,6 @@
   (load-theme #'catppuccin t)
   (setq catppuccin-flavor 'mocha)
   (catppuccin-reload))
-
-(use-package zenburn-theme
-  :ensure t
-  )
 
 (use-package spaceline
   :ensure t)
@@ -100,9 +92,5 @@
 (use-package emojify
   :ensure t
   :hook (after-init . global-emojify-mode))
-
-(setq-default display-fill-column-indicator-column 88)
-(setq projectile-project-search-path '("~/workspace/"))
-
 
 (provide 'gui-config)

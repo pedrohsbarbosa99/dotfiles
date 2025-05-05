@@ -5,7 +5,7 @@
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode +1)
-  (setq projectile-project-search-path '("~/git/" "~/" "manage.py")
+  (setq projectile-project-search-path '("~/git/" "~/")
 	projectile-switch-project-action 'neotree-projectile-action
 	projectile-indexing-method 'alien
 	projectile-use-git-grep 1))
@@ -22,7 +22,7 @@
   :init
   (setq dashboard-items '((recents . 5)
 			  (projects . 10))
-	dashboard-banner-logo-title "Welcome to the mato!"
+	dashboard-banner-logo-title "Bem Vindo, Chefe!"
 	dashboard-startup-banner 'logo
 	dashboard-set-file-icons t
 	dashboard-icon-type 'all-the-icons
@@ -31,6 +31,6 @@
 	dashboard-set-init-info nil)
   :config
   (dashboard-setup-startup-hook))
-(setq dashboard-org-agenda-categories '("Tasks"))
+  (setq dashboard-org-agenda-categories '("Tasks"))
 
 (provide 'dashboard-config)

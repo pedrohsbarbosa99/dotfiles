@@ -37,22 +37,4 @@
     (funcall initial-major-mode)
     (setq buffer-offer-save t)))
 
-
-(defcustom pyenv-mode-mode-line-format nil
-  "Format string for displaying pyenv version in mode-line."
-  :type '(choice (const :tag "Disabled" nil)
-                 (string :tag "Custom Format")))
-
-(defun my/auto-activate-venv ()
-  "Ativa automaticamente a venv local se a pasta '.venv' ou 'venv' existir em algum diretório ascendente."
-  (let* ((root (or (locate-dominating-file default-directory ".venv")
-                   (locate-dominating-file default-directory "venv")))
-         (venv-dir (cond
-                    ((and root (file-directory-p (expand-file-name ".venv" root)))
-                     (expand-file-name ".venv" root))
-                    ((and root (file-directory-p (expand-file-name "venv" root)))
-                     (expand-file-name "venv" root)))))
-    (when venv-dir
-      (pyvenv-activate venv-dir))))
-
 (provide 'functions)
