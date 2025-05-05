@@ -4,6 +4,16 @@
   :config
   (global-origami-mode))
 
+;; auto format
+;; pipx install darker
+(use-package reformatter
+  :ensure t
+  :config
+  (reformatter-define darker-reformat
+    :program "~/.local/bin/darker"
+    :args (list input-file "--isort")
+    :stdin nil
+    :stdout nil))
 
 
 (define-key origami-mode-map (kbd "<backtab>") 'origami-toggle-node)
@@ -111,6 +121,14 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+(use-package multiple-cursors
+  :ensure t
+  :bind (
+    ("C-S-c C-S-c" . mc/edit-lines)
+    ("C->"         . mc/mark-next-like-this)
+    ("C-<"         . mc/mark-previous-like-this)
+    ("C-c C-<"     . mc/mark-all-like-this)))
 
 
 (provide 'code-config)

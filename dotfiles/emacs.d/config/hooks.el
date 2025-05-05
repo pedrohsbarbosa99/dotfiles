@@ -25,4 +25,6 @@
 
 (add-hook 'after-change-major-mode-hook #'my-ts-mode-keybindings)
 
+(add-hook 'python-ts-mode-hook #'darker-reformat-on-save-mode)
+
 (provide 'hooks)
