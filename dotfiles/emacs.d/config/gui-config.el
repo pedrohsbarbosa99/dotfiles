@@ -66,6 +66,9 @@
   )
   :bind ("C-\\". 'neotree-toggle))
 
+(with-eval-after-load 'neotree
+  (add-to-list 'neo-hidden-regexp-list "^__pycache__$"))
+
 ;; Buffer tabs
 (global-unset-key (kbd "C-x <prior>"))
 (global-unset-key (kbd "C-x <next>"))
