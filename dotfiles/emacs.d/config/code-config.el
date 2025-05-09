@@ -122,14 +122,15 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-;; multiple cursors
-(use-package multiple-cursors
+;; iedit
+(use-package iedit
   :ensure t
-  :bind (
-    ("C-S-c C-S-c" . mc/edit-lines)
-    ("C->"         . mc/mark-next-like-this)
-    ("C-<"         . mc/mark-previous-like-this)
-    ("C-c C-<"     . mc/mark-all-like-this)))
+  :bind (("C->" . iedit-mode)))
+
+(defun my/reset-save-key-after-iedit ()
+  (define-key (current-global-map) (kbd "C-s") #'save-buffer))
+
+(add-hook 'iedit-mode-end-hook #'my/reset-save-key-after-iedit)
 
 
 (provide 'code-config)

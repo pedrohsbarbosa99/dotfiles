@@ -39,6 +39,7 @@
                   (interactive)
                   (let ((old-face-attribute (face-attribute 'default :height)))
                     (set-face-attribute 'default nil :height (- old-face-attribute 5)))))
+
 (global-set-key (kbd "C-c r") 'rgrep)
 
 (global-set-key (kbd "C-c g") 'goto-line)

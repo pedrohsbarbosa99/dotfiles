@@ -116,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 alias rs="python manage.py runserver"
 alias mkm="python manage.py makemigration"
 alias mg="python manage.py migrate"
-alias act="source venv/bin/activate"
+alias act="source .venv/bin/activate"
 alias sp="python manage.py shell_plus"
 mkcd() {
     mkdir "$1" && cd "$1"
