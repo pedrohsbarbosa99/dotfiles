@@ -105,7 +105,10 @@
   :hook (lsp-mode . lsp-ui-mode)
   :after lsp-mode
   :config
-  (setq lsp-ui-doc-mode 1))
+  (setq lsp-ui-doc-mode 1)
+  (setq lsp-signature-doc-lines 3)
+)
+
 
 (require 'lsp-diagnostics)
 (lsp-diagnostics-flycheck-enable)
