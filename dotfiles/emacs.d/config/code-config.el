@@ -41,7 +41,7 @@
   (reformatter-define ruff-check
     :program "~/.local/bin/ruff"
     :args '("check"
-            "--select" "E,F,UP,I,B,C4,SIM,TID,ISC,PIE,RUF"
+            "--select" "E,F,UP,I"
             "--ignore" "B008"
             "--fix"
             "-")
