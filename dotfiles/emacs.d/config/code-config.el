@@ -4,18 +4,6 @@
   :config
   (global-origami-mode))
 
-;; auto format
-;; pipx install darker
-(use-package reformatter
-  :ensure t
-  :config
-  (reformatter-define darker-reformat
-    :program "~/.local/bin/darker"
-    :args (list input-file "--isort")
-    :stdin nil
-    :stdout nil))
-
-
 (define-key origami-mode-map (kbd "<backtab>") 'origami-toggle-node)
 (define-key origami-mode-map (kbd "C-<iso-lefttab>") 'origami-toggle-all-nodes)
 (setopt display-fill-column-indicator-column 88)
@@ -39,6 +27,27 @@
           (lambda() (local-unset-key (kbd "C-c C-c"))))
 (add-hook 'python-mode-hook
           (lambda() (local-unset-key (kbd "C-c C-s"))))
+
+;; pipx install ruff
+(use-package reformatter
+  :ensure t
+  :config
+  (reformatter-define ruff-format
+    :program "~/.local/bin/ruff"
+    :args '("format" "-")
+    :stdin t
+    :stdout t)
+  
+  (reformatter-define ruff-check
+    :program "~/.local/bin/ruff"
+    :args '("check"
+            "--select" "E,F,UP,I,B,C4,SIM,TID,ISC,PIE,RUF"
+            "--ignore" "B008"
+            "--fix"
+            "-")
+    :stdin t
+    :stdout t))
+
 
 ;; ----------- Syntax checker
 (use-package flycheck
@@ -124,7 +133,5 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
-
-
 
 (provide 'code-config)
