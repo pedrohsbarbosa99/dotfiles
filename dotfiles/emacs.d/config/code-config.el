@@ -28,7 +28,7 @@
 (add-hook 'python-mode-hook
           (lambda() (local-unset-key (kbd "C-c C-s"))))
 
-;; pipx install ruff
+;; pipx install ruff, isort
 (use-package reformatter
   :ensure t
   :config
@@ -46,7 +46,12 @@
             "--fix"
             "-")
     :stdin t
-    :stdout t))
+    :stdout t)
+
+  (reformatter-define isort-format
+  :program "~/.local/bin/isort"
+  :args '("-"))
+)
 
 
 ;; ----------- Syntax checker
