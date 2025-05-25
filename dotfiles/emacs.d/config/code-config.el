@@ -75,22 +75,26 @@
    )
 
 ;; Spell
-(setq
-    ispell-program-name "/usr/bin/hunspell"
-    ispell-dictionary "en_US")
+(setq ispell-program-name "/usr/bin/hunspell"
+      ispell-dictionary "en_US")
 
 (require 'flyspell)
-(eval-after-load "flyspell"
-  '(progn
-     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
-     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+
+(with-eval-after-load 'flyspell
+  (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+  (define-key flyspell-mouse-map [mouse-3] #'undefined))
+
+(add-hook 'text-mode-hook #'flyspell-mode)
+
+(add-hook 'prog-mode-hook #'flyspell-mode)
 
 (add-hook 'yaml-mode-hook #'flyspell-prog-mode)
 (add-hook 'conf-mode-hook #'flyspell-prog-mode)
-(add-hook 'prog-mode-hook #'flyspell-prog-mode)
 (add-hook 'toml-mode-hook #'flyspell-prog-mode)
-(add-hook 'dockerfile-mode #'flyspell-prog-mode)
-(add-hook 'docker-compose-mode #'flyspell-prog-mode)
+(add-hook 'dockerfile-mode-hook #'flyspell-prog-mode)
+(add-hook 'docker-compose-mode-hook #'flyspell-prog-mode)
+
+
 
 
 (use-package flycheck-inline
