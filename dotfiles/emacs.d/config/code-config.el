@@ -77,7 +77,7 @@
 ;; Spell
 (setq
     ispell-program-name "/usr/bin/hunspell"
-    ispell-dictionary "en")
+    ispell-dictionary "en_US")
 
 (require 'flyspell)
 (eval-after-load "flyspell"

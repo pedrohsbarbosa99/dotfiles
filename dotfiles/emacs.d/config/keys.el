@@ -43,5 +43,8 @@
 (global-set-key (kbd "C-c r") 'rgrep)
 
 (global-set-key (kbd "C-c g") 'goto-line)
+(with-eval-after-load 'lsp-mode
+  (define-key lsp-mode-map (kbd "C-<f2>") #'lsp-rename))
+
 
 (provide 'keys)
