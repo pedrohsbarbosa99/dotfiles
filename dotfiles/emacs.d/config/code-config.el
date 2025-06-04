@@ -86,7 +86,8 @@
 
 (add-hook 'text-mode-hook #'flyspell-mode)
 
-(add-hook 'prog-mode-hook #'flyspell-mode)
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
 
 (add-hook 'yaml-mode-hook #'flyspell-prog-mode)
 (add-hook 'conf-mode-hook #'flyspell-prog-mode)
@@ -142,5 +143,7 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+
 
 (provide 'code-config)

@@ -1,6 +1,6 @@
 (require 'package)
 
-;; Git extention
+;; Git extension
 (use-package magit
   :ensure t)
 

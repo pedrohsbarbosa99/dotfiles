@@ -86,8 +86,8 @@
   (centaur-tabs-headline-match)
   (centaur-tabs-mode t)
   :bind
-  ("C-x <prior>" . centaur-tabs-backward)
-  ("C-x <next>" . centaur-tabs-forward)
+  ([mouse-8] . centaur-tabs-backward)
+  ([mouse-9] . centaur-tabs-forward)
   :hook
   (dashboard-mode . centaur-tabs-local-mode)
   (vterm-mode . centaur-tabs-local-mode))
@@ -95,5 +95,7 @@
 (use-package emojify
   :ensure t
   :hook (after-init . global-emojify-mode))
+
+
 
 (provide 'gui-config)

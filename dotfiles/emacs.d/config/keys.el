@@ -46,5 +46,4 @@
 (with-eval-after-load 'lsp-mode
   (define-key lsp-mode-map (kbd "C-<f2>") #'lsp-rename))
 
-
 (provide 'keys)
