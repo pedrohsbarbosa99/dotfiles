@@ -144,6 +144,16 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+;; --- front end
+(use-package lsp-mode
+  :hook ((typescript-tsx-mode . lsp)
+         (typescript-mode . lsp)
+         (js-mode . lsp)
+         (js-ts-mode . lsp)
+         (tsx-ts-mode . lsp))
+  :commands lsp)
+(setenv "PATH" (concat "/home/pedro/.nvm/versions/node/v20.13.1/bin:" (getenv "PATH")))
+(add-to-list 'exec-path "/home/pedro/.nvm/versions/node/v20.13.1/bin")
 
 
 (provide 'code-config)

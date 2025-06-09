@@ -29,4 +29,10 @@
 (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
 (add-hook 'python-ts-mode-hook 'ruff-check-on-save-mode)
 
+(add-hook 'js-mode-hook #'my/setup-prettier-on-save)
+(add-hook 'js-ts-mode-hook #'my/setup-prettier-on-save)
+(add-hook 'typescript-mode-hook #'my/setup-prettier-on-save)
+(add-hook 'typescript-tsx-mode-hook #'my/setup-prettier-on-save)
+(add-hook 'tsx-ts-mode-hook #'my/setup-prettier-on-save)
+
 (provide 'hooks)
