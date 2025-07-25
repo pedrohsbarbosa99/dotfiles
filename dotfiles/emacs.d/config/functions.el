@@ -54,4 +54,10 @@
 (defun my/setup-prettier-on-save ()
   (add-hook 'before-save-hook #'my/run-prettier nil t))
 
+(defun my-go-format-before-save ()
+  (when (derived-mode-p 'go-mode 'go-ts-mode)
+    (lsp-format-buffer)))
+
+
+
 (provide 'functions)

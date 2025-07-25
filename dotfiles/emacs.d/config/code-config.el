@@ -144,16 +144,24 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+
+(let ((node-path "/home/pedro/.nvm/versions/node/v20.13.1/bin")
+      (go-bin-path "/home/pedro/go/bin")
+      (go-install-path "/usr/local/go/bin"))
+  (setenv "PATH" (concat node-path ":" go-bin-path ":" go-install-path ":" (getenv "PATH")))
+  (setq exec-path (append (list node-path go-bin-path go-install-path) exec-path)))
+
 ;; --- front end
 (use-package lsp-mode
   :hook ((typescript-tsx-mode . lsp)
          (typescript-mode . lsp)
          (js-mode . lsp)
          (js-ts-mode . lsp)
-         (tsx-ts-mode . lsp))
+         (tsx-ts-mode . lsp)
+	 (go-ts-mode . lsp-deferred))
   :commands lsp)
-(setenv "PATH" (concat "/home/pedro/.nvm/versions/node/v20.13.1/bin:" (getenv "PATH")))
-(add-to-list 'exec-path "/home/pedro/.nvm/versions/node/v20.13.1/bin")
+
+
 
 
 (provide 'code-config)

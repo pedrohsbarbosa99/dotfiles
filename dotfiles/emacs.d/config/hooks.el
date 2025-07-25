@@ -34,5 +34,6 @@
 (add-hook 'typescript-mode-hook #'my/setup-prettier-on-save)
 (add-hook 'typescript-tsx-mode-hook #'my/setup-prettier-on-save)
 (add-hook 'tsx-ts-mode-hook #'my/setup-prettier-on-save)
+(add-hook 'before-save-hook #'my-go-format-before-save)
 
 (provide 'hooks)
