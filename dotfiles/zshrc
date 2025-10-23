@@ -162,3 +162,4 @@ export PATH=$PATH:/usr/local/go/bin
 export GOROOT=/usr/local/go  # ou onde o Go foi instalado
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"

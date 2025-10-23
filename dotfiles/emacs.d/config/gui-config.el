@@ -19,7 +19,7 @@
 
 ;; Font size
 ;(set-face-attribute 'default nil :font "OpenDyslexicM Nerd Font Bold" :height 200)
-(set-face-attribute 'default nil :font "Dejavu Sans Mono Book" :height 220)
+(set-face-attribute 'default nil :font "Dejavu Sans Mono Book" :height 180)
 
 ;; flex buffer
 (defalias 'list-buffers 'ibuffer-other-window) ;; ibuffer default C-x C-b
