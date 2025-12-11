@@ -145,7 +145,6 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 
-. "$HOME/.local/bin/env"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
