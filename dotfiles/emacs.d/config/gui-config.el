@@ -40,8 +40,13 @@
 ;; Update changed buffers
 (global-auto-revert-mode t)
 
+;; Install all-the-icons fonts once if missing
 (use-package all-the-icons
-  :ensure t)
+  :ensure t
+  :config
+  (unless (file-exists-p (expand-file-name "~/.local/share/fonts/all-the-icons.ttf"))
+    (all-the-icons-install-fonts t)))
+
 
 (use-package catppuccin-theme
   :ensure t
