@@ -1,0 +1,25 @@
+---
+- name: Install Emacs via Flatpak
+  hosts: localhost
+  become: yes
+  tasks:
+
+    - name: Ensure flatpak is installed
+      package:
+        name: flatpak
+        state: present
+
+    - name: Ensure flathub remote is added
+      flatpak_remote:
+        name: flathub
+        state: present
+        method: system
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+    - name: Install Emacs from Flathub
+      flatpak:
+        name: org.gnu.emacs
+        state: present
+        method: system
+        remote: flathub
+

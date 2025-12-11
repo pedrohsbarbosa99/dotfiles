@@ -1,0 +1,16 @@
+- hosts: localhost
+  tasks:
+    - ansible.builtin.debug:
+        msg: play1
+
+- name: python
+  import_playbook: python.yml
+
+- name: zsh
+  import_playbook: zsh.yml
+
+- name: coding
+  import_playbook: coding.yml
+
+- name: gtk
+  import_playbook: gtk.yml

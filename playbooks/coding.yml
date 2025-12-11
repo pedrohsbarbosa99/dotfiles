@@ -1,0 +1,15 @@
+---
+- name: Install coding tools
+  hosts: localhost
+
+  tasks:
+    - name: Install cmake
+      become: yes
+      package:
+        name: cmake
+        state: present
+    - name: Install terminator
+      become: yes
+      package:
+        name: terminator
+        state: present

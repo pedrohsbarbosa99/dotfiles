@@ -1,0 +1,39 @@
+---
+- name: Instalação das ferramentas python
+  hosts: localhost
+
+  tasks:
+    - name: Instalação pipx
+      become: yes
+      package:
+        name: pipx
+        state: present
+
+    - name: configuração pipx
+      become: yes
+      shell: pipx ensurepath
+
+    - name: Install pipx library for Ansible
+      pip:
+        name: pipx
+
+    - name: Install pyright
+      community.general.pipx:
+        name: pyright
+
+    - name: Install ipython
+      community.general.pipx:
+        name: ipython
+    
+    - name: Install isort
+      community.general.pipx:
+        name: isort
+    
+    - name: Install ruff
+      community.general.pipx:
+        name: ruff
+
+    - name: Clone Pyenv
+      git:
+        repo: https://github.com/pyenv/pyenv.git
+        dest: ~/.pyenv
