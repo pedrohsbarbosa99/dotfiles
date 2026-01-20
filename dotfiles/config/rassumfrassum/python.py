@@ -1,8 +1,7 @@
 def servers():
     return [
-        ["zuban", "server"],
+        ["pyright-langserver", "--stdio"],
         ["ruff", "server"],
         ["typos-lsp"],
         ["pytest-language-server"],
-        ["pyright-langserver"],
     ]
