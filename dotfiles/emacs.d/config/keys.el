@@ -1,7 +1,3 @@
-(use-package which-key
-  :ensure t
-  :config (which-key-mode))
-
 (global-unset-key (kbd "C-/"))
 (global-unset-key (kbd "C-_"))
 (global-unset-key (kbd "M-a"))
@@ -9,6 +5,18 @@
 (global-unset-key (kbd "C-y"))
 (global-unset-key (kbd "C-<up>"))
 (global-unset-key (kbd "C-<down>"))
+
+
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
+(use-package move-text
+  :ensure t
+  :config
+  (progn
+    (global-set-key (kbd "C-<up>") 'move-text-up)
+    (global-set-key (kbd "C-<down>") 'move-text-down)))
 
 (global-set-key (kbd "C-<dead-grave>") 'vterm-toggle)
 (global-set-key (kbd "C-`") 'vterm-toggle)
@@ -39,16 +47,5 @@
                   (interactive)
                   (let ((old-face-attribute (face-attribute 'default :height)))
                     (set-face-attribute 'default nil :height (- old-face-attribute 5)))))
-
-(global-set-key (kbd "C-c r") 'rgrep)
-
-(global-set-key (kbd "C-c g") 'goto-line)
-
-
-(with-eval-after-load 'lsp-mode
-  (define-key lsp-mode-map (kbd "M-r") #'lsp-rename))
-
-(global-set-key (kbd "M-h") 'move-beginning-of-line)
-(global-set-key (kbd "M-l") 'move-end-of-line)
 
 (provide 'keys)

@@ -1,4 +1,8 @@
 config:
+  impignore:
+  - __pycache__
+  - '*.pyc'
+  - '*.pyo'
   backup: true
   banner: true
   create: true
@@ -29,6 +33,9 @@ dotfiles:
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
+  d_rassumfrassum:
+    src: config/rassumfrassum
+    dst: ~/.config/rassumfrassum
 profiles:
   pedro-barbosa:
     dotfiles:
@@ -39,4 +46,4 @@ profiles:
     - d_rofi
     - d_terminator
     - f_p10k.zsh
-
+    - d_rassumfrassum

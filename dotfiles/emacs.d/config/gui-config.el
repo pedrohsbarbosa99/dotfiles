@@ -8,6 +8,9 @@
 (setq-default message-log-max nil)
 (kill-buffer "*Messages*")
 
+;; Show column indicator
+(setopt display-fill-column-indicator-column 88)
+
 ;; window size
 (add-to-list 'default-frame-alist '(height . 26))
 (add-to-list 'default-frame-alist '(width . 89))
@@ -40,13 +43,8 @@
 ;; Update changed buffers
 (global-auto-revert-mode t)
 
-;; Install all-the-icons fonts once if missing
 (use-package all-the-icons
-  :ensure t
-  :config
-  (unless (file-exists-p (expand-file-name "~/.local/share/fonts/all-the-icons.ttf"))
-    (all-the-icons-install-fonts t)))
-
+  :ensure t)
 
 (use-package catppuccin-theme
   :ensure t
@@ -71,12 +69,10 @@
   )
   :bind ("C-\\". 'neotree-toggle))
 
-(with-eval-after-load 'neotree
-  (add-to-list 'neo-hidden-regexp-list "^__pycache__$"))
-
 ;; Buffer tabs
 (global-unset-key (kbd "C-x <prior>"))
 (global-unset-key (kbd "C-x <next>"))
+
 (use-package centaur-tabs
   :ensure t
   :demand
@@ -91,8 +87,8 @@
   (centaur-tabs-headline-match)
   (centaur-tabs-mode t)
   :bind
-  ([mouse-8] . centaur-tabs-backward)
-  ([mouse-9] . centaur-tabs-forward)
+  ("C-x <prior>" . centaur-tabs-backward)
+  ("C-x <next>" . centaur-tabs-forward)
   :hook
   (dashboard-mode . centaur-tabs-local-mode)
   (vterm-mode . centaur-tabs-local-mode))
@@ -100,7 +96,5 @@
 (use-package emojify
   :ensure t
   :hook (after-init . global-emojify-mode))
-
-
 
 (provide 'gui-config)

@@ -6,24 +6,33 @@
 (require 'gui-config)
 (require 'git-config)
 (require 'dashboard-config)
-(require 'markdown-config)
 (require 'html-config)
+(require 'lsp-config)
 (require 'code-config)
 (require 'languages)
 (require 'functions)
 (require 'keys)
 (require 'hooks)
 (require 'term-config)
+(require 'write-config)
+(require 'feed-config)
 
-
-
-
-(use-package move-text
+; Pacotes que estou testando
+(use-package exec-path-from-shell
   :ensure t
   :config
-  (progn
-    (global-set-key (kbd "C-<up>") 'move-text-up)
-    (global-set-key (kbd "C-<down>") 'move-text-down)))
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+(use-package hl-todo
+  :ensure t
+  :config
+  (global-hl-todo-mode 1))
+; fim: Pacotes que estou testando
+
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode))
 
 ;; Ivy
 (use-package swiper
@@ -35,7 +44,6 @@
            enable-recursive-minibuffers t)
     (global-set-key "\C-f" 'swiper)))
 
-
 (use-package counsel
   :ensure t)
 (custom-set-variables
@@ -43,15 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("8c7e832be864674c220f9a9361c851917a93f921fedb7717b1b5ece47690c098"
-     "e8bd9bbf6506afca133125b0be48b1f033b1c8647c628652ab7a2fe065c10ef0"
-     "13096a9a6e75c7330c1bc500f30a8f4407bd618431c94aeab55c9855731a95e1"
-     "c46651ab216eb31e699be1bd5e6df8229b08005b534194c1ea92519b09661d71"
-     "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7"
-     "014cb63097fc7dbda3edf53eb09802237961cbb4c9e9abd705f23b86511b0a69"
-     default))
- '(package-selected-packages nil))
+ '(org-agenda-files nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

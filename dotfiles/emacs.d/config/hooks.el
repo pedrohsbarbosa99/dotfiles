@@ -13,7 +13,6 @@
 
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 ; install hunspell-pt-br on aur
-(add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook 'hl-line-mode)
 
 ;; ts-modes
@@ -24,16 +23,5 @@
     (setq-local yas-indent-line 'fixed)))
 
 (add-hook 'after-change-major-mode-hook #'my-ts-mode-keybindings)
-
-(add-hook 'python-ts-mode-hook 'isort-format-on-save-mode)
-(add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
-(add-hook 'python-ts-mode-hook 'ruff-check-on-save-mode)
-
-(add-hook 'js-mode-hook #'my/setup-prettier-on-save)
-(add-hook 'js-ts-mode-hook #'my/setup-prettier-on-save)
-(add-hook 'typescript-mode-hook #'my/setup-prettier-on-save)
-(add-hook 'typescript-tsx-mode-hook #'my/setup-prettier-on-save)
-(add-hook 'tsx-ts-mode-hook #'my/setup-prettier-on-save)
-(add-hook 'before-save-hook #'my-go-format-before-save)
 
 (provide 'hooks)
