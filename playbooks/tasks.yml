@@ -11,6 +11,3 @@
 
 - name: coding
   import_playbook: coding.yml
-
-- name: gtk
-  import_playbook: gtk.yml
