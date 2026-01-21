@@ -28,20 +28,6 @@
         dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         update: no
 
-    - name: Install Powerlevel10k
-      git:
-        repo: https://github.com/romkatv/powerlevel10k.git
-        dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
-        depth: 1
-        update: no
-
-    - name: Install Powerlevel10k (User Home)
-      git:
-        repo: https://github.com/romkatv/powerlevel10k.git
-        dest: ~/powerlevel10k
-        depth: 1
-        update: no
-
     - name: Get zsh path
       command: which zsh
       register: zsh_path
