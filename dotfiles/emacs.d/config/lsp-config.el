@@ -1,13 +1,3 @@
-(use-package mason
-  :ensure t
-  :config
-  (mason-setup))
-
-(mason-setup
-  (dolist (pkg '("zuban" "ruff" "marksman" "ltex-ls-plus" "typos-lsp"))
-    (unless (mason-installed-p pkg)
-      (ignore-errors (mason-install pkg)))))
-
 (use-package eglot
   :ensure t
   :defer t

@@ -13,9 +13,6 @@
 (require 'functions)
 (require 'keys)
 (require 'hooks)
-(require 'term-config)
-(require 'write-config)
-(require 'feed-config)
 
 ; Pacotes que estou testando
 (use-package exec-path-from-shell
