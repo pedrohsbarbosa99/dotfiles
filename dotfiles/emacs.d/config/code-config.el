@@ -18,27 +18,7 @@
   company-minimum-prefix-length 1)
  (global-company-mode t))
 
-;; sardine
-(setq
- python-shell-interpreter "~/.local/bin/sardine"
- python-shell-interpreter-args "")
 
-(defun sardine/start-sardine ()
-  (interactive)
-  (run-python))
-
-(defun sardine/eval-block ()
-  (interactive)
-  (mark-paragraph)
-  (if (and transient-mark-mode mark-active)
-      (python-shell-send-region (point) (mark))
-    (python-shell-send-region (point-at-bol) (point-at-eol)))
-  (forward-paragraph))
-
-(defun sardine/stop-code ()
-  "Stop all the Sardine code currently running"
-  (interactive)
-  (python-shell-send-string "panic()"))
 
 ; Unmapping keys from the Python mode
 (add-hook
@@ -54,6 +34,27 @@
 ;; --- ts
 (use-package tree-sitter-langs :ensure t)
 
+;; (use-package treesit-auto
+;;   :custom
+;;   (treesit-auto-install 'prompt)
+;;   :config
+;;   (global-treesit-auto-mode 1))
+
+
+
+
+
+
+;; ------- code format
+(use-package ruff-format
+  :ensure t
+  :hook (python-mode . ruff-format-on-save-mode)
+)
+
+(use-package python-isort
+  :ensure t
+  :hook (python-mode . python-isort-on-save-mode)
+)
 
 
 (provide 'code-config)

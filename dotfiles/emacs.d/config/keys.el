@@ -35,6 +35,8 @@
 (global-set-key (kbd "C-x C-t") 'projectile-run-vterm)
 (global-set-key (kbd "C-S-f") 'projectile-grep)
 (global-set-key (kbd "C-e") 'flycheck-list-errors)
+(global-set-key (kbd "C-c r") 'rgrep)
+(global-set-key (kbd "C-c g") 'goto-line)
 
 (global-set-key (kbd "C-+")
                 (lambda ()
