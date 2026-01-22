@@ -1,23 +1,25 @@
 (use-package eglot
   :ensure t
   :defer t
-  :hook (((python-mode python-ts-mode) . eglot-ensure)
-	 (markdown-mode . eglot-ensure)
-         ((python-mode python-ts-mode) . (lambda () (set-fill-column 88))))
+  :hook ((python-mode . eglot-ensure)
+         (python-ts-mode . eglot-ensure)
+         (markdown-mode . eglot-ensure)
+         (python-mode . (lambda () (set-fill-column 88)))
+         (python-ts-mode . (lambda () (set-fill-column 88))))
   :config
   (add-to-list 'eglot-server-programs
                '((python-mode python-ts-mode) . ("rass" "python")))
   (add-to-list 'eglot-server-programs
-               '((markdown-mode) . ("rass" "markdown")))
+               '(markdown-mode . ("rass" "markdown")))
   (setq-default
    eglot-workspace-configuration
-   '(
-     :ltex
-     (:language "pt-BR" ;["pt-BR" "en-US"]
+   '(:ltex
+     (:language "pt-BR"
       :additionalRules (:enablePickyRules t
-			:motherTongue "pt-BR")
+                        :motherTongue "pt-BR")
       :disabledRules (:pt-BR ["PT_SMART_QUOTES" "ELLIPSIS"])
       :completionEnabled t))))
+
 
 (use-package
  flycheck
