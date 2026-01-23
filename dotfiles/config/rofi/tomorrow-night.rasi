@@ -1,0 +1,66 @@
+* {
+    bg: #1d1f21;
+    fg: #c5c8c6;
+    border: #81a2be;
+    selected: #373b41;
+    active: #b5bd68;
+    urgent: #cc6666;
+
+    background-color: @bg;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width: 35%;
+    border: 2px;
+    border-color: @border;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+prompt {
+    text-color: @active;
+}
+
+entry {
+    background-color: @bg;
+    padding: 6px;
+}
+
+listview {
+    spacing: 6px;
+    padding: 6px 0;
+}
+
+element {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+element normal.normal {
+    background-color: @bg;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: @active;
+}
+
+element urgent.normal {
+    text-color: @urgent;
+}
+
+element active.normal {
+    text-color: @active;
+}
