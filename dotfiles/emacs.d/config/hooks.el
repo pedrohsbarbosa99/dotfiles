@@ -10,6 +10,8 @@
 (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 (add-hook 'prog-mode-hook #'origami-mode)
+(add-hook 'rust-mode-hook 'eglot-ensure)
+
 
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 ; install hunspell-pt-br on aur
@@ -23,6 +25,5 @@
     (setq-local yas-indent-line 'fixed)))
 
 (add-hook 'after-change-major-mode-hook #'my-ts-mode-keybindings)
-
 
 (provide 'hooks)

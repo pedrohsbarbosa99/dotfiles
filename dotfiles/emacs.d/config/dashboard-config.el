@@ -24,7 +24,7 @@
 			  (projects . 5)
 			  (bookmarks . 5)
 			  (agenda . 5))
-	dashboard-banner-logo-title "Bem Vindo!"
+	dashboard-banner-logo-title "Welcome!"
 	dashboard-startup-banner 'logo
 	dashboard-set-file-icons t
 	dashboard-icon-type 'all-the-icons

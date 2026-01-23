@@ -1,16 +1,24 @@
 (use-package eglot
   :ensure t
   :defer t
-  :hook ((python-mode . eglot-ensure)
-         (python-ts-mode . eglot-ensure)
-         (markdown-mode . eglot-ensure)
-         (python-mode . (lambda () (set-fill-column 88)))
-         (python-ts-mode . (lambda () (set-fill-column 88))))
+  :hook ((python-mode python-ts-mode) . eglot-ensure)
+        (markdown-mode . eglot-ensure)
+        ((rust-mode rust-ts-mode) . eglot-ensure)
   :config
+  ;; Python via rass
   (add-to-list 'eglot-server-programs
                '((python-mode python-ts-mode) . ("rass" "python")))
+
+  ;; Markdown via rass
   (add-to-list 'eglot-server-programs
                '(markdown-mode . ("rass" "markdown")))
+
+  ;; Rust direto
+  (add-to-list 'eglot-server-programs
+             '((rust-ts-mode rust-mode) .
+               ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+
+
   (setq-default
    eglot-workspace-configuration
    '(:ltex

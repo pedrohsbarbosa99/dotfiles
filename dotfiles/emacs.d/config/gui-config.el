@@ -9,7 +9,7 @@
 (kill-buffer "*Messages*")
 
 ;; Show column indicator
-(setopt display-fill-column-indicator-column 88)
+(setopt display-fill-column-indicator-column 80)
 
 ;; window size
 (add-to-list 'default-frame-alist '(height . 26))

@@ -37,5 +37,4 @@
     (funcall initial-major-mode)
     (setq buffer-offer-save t)))
 
-
 (provide 'functions)

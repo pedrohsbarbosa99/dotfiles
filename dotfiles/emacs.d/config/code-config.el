@@ -1,9 +1,9 @@
 ;; Text Folding
-;; (use-package origami :ensure t)
+(use-package origami :ensure t)
 
-;; (define-key origami-mode-map (kbd "<backtab>") 'origami-toggle-node)
-;; (define-key
- ;; origami-mode-map (kbd "C-<iso-lefttab>") 'origami-toggle-all-nodes)
+(define-key origami-mode-map (kbd "<backtab>") 'origami-toggle-node)
+(define-key
+ origami-mode-map (kbd "C-<iso-lefttab>") 'origami-toggle-all-nodes)
 
 ; snippets from autocomplete
 (use-package yasnippet :ensure t :init (yas-global-mode 1))
@@ -18,7 +18,8 @@
   company-minimum-prefix-length 1)
  (global-company-mode t))
 
-
+(use-package rust-mode
+  :ensure t)
 
 ; Unmapping keys from the Python mode
 (add-hook
@@ -32,16 +33,15 @@
 (use-package tree-sitter-langs :ensure t)
 
 (use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  (treesit-auto-langs '(rust))
   :config
-  (global-treesit-auto-mode)
-  :ensure t)
+  (global-treesit-auto-mode))
 
 
 
 
-
-
-;; ------- code format
 (use-package ruff-format
   :ensure t
   :hook (python-mode . ruff-format-on-save-mode)
@@ -51,6 +51,5 @@
   :ensure t
   :hook (python-mode . python-isort-on-save-mode)
 )
-
 
 (provide 'code-config)
