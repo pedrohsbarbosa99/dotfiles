@@ -36,6 +36,9 @@ dotfiles:
   d_rassumfrassum:
     src: config/rassumfrassum
     dst: ~/.config/rassumfrassum
+  f_rusty.zsh-theme:
+    src: oh-my-zsh/custom/themes/rusty.zsh-theme
+    dst: ~/.oh-my-zsh/custom/themes/rusty.zsh-theme
 profiles:
   pedro-barbosa:
     dotfiles:
@@ -47,3 +50,4 @@ profiles:
     - d_terminator
     - f_p10k.zsh
     - d_rassumfrassum
+    - f_rusty.zsh-theme
